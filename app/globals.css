@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* Root Colors */
+:root {
+  --background: #060D1F;
+  --foreground: #F4F6FA;
+
+  --navy-950: #060D1F;
+  --navy-900: #0B1A3B;
+  --navy-800: #112247;
+  --navy-700: #1B2B5E;
+
+  --gold-500: #F0A500;
+  --gold-400: #FFD166;
+  --gold-600: #D49100;
+
+  --text-primary: #F4F6FA;
+  --text-secondary: rgba(244, 246, 250, 0.7);
+  --text-muted: rgba(244, 246, 250, 0.4);
+
+  --pi-success: #4ADE80;
+  --pi-danger: #FF5A6E;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+/* Body */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Display Font */
+.font-display {
+  font-family: 'Fraunces', serif;
+}
+
+/* Glass Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card-bright {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Orb Styles */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  transition: transform 0.3s ease-out;
+}
+
+.orb-gold {
+  background: radial-gradient(circle at 30% 30%,
+    rgba(240, 165, 0, 0.3),
+    rgba(240, 165, 0, 0.05));
+}
+
+.orb-blue {
+  background: radial-gradient(circle at 30% 30%,
+    rgba(42, 77, 181, 0.3),
+    rgba(42, 77, 181, 0.05));
+}
+
+.orb-indigo {
+  background: radial-gradient(circle at 30% 30%,
+    rgba(99, 102, 241, 0.25),
+    rgba(99, 102, 241, 0.05));
+}
+
+/* Animations */
+@keyframes orb-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@keyframes pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(240, 165, 0, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 10px rgba(240, 165, 0, 0.2);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation Classes */
+.animate-orb-float {
+  animation: orb-float 8s ease-in-out infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out;
+}
+
+/* Delays */
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-600 {
+  animation-delay: 0.6s;
+}
+
+/* Gold Button */
+.btn-gold {
+  background: linear-gradient(135deg, #F0A500, #FFD166);
+  color: #060D1F;
+  font-weight: 600;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 12px 20px;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #FFB820, #FFE082);
+  box-shadow: 0 8px 30px rgba(240, 165, 0, 0.3);
+}
+
+.btn-gold:active {
+  transform: scale(0.98);
+}
+
+/* Inputs */
+.field-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.field-input:focus {
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 3px rgba(240, 165, 0, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.field-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Badge */
+.badge-success {
+  background: rgba(74, 222, 128, 0.1);
+  color: var(--pi-success);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  padding: 4px 10px;
+}
+
+/* Bento Cards */
+.bento-card {
+  transition: all 0.3s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(240, 165, 0, 0.2);
+}.badge-warning {
+  background: rgba(251, 191, 36, 0.1);
+  color: #FBBF24;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.badge-danger {
+  background: rgba(255, 90, 110, 0.1);
+  color: #FF5A6E;
+  border: 1px solid rgba(255, 90, 110, 0.2);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.badge-info {
+  background: rgba(96, 165, 250, 0.1);
+  color: #60A5FA;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+:root {
+  --pi-warning: #FBBF24;
+  --pi-info: #60A5FA;
+}
+
+.table-row-hover {
+  transition: all 0.15s ease;
+}
+
+.table-row-hover:hover {
+  background: rgba(255, 255, 255, 0.04);
+}/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Bento hover */
+.bento-card {
+  transition: all 0.3s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(240, 165, 0, 0.2);
+}
+
+/* Badges */
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-success {
+  background: rgba(34, 211, 160, 0.12);
+  color: #22d3a0;
+}
+
+.badge-warning {
+  background: rgba(240, 165, 0, 0.12);
+  color: #f0a500;
+}
+
+.badge-info {
+  background: rgba(96, 165, 250, 0.12);
+  color: #60a5fa;
+}
+
+/* Animation */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
